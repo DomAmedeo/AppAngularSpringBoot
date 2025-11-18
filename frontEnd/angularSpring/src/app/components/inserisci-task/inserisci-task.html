@@ -1,0 +1,15 @@
+<h1>Inserisci un Task</h1>
+<div class="form-goup">
+    <label for="titolo">Titolo</label>
+    <input type="text" class="form-control" [(ngModel)]="titolo" id="titolo">
+</div>
+<div class="form-goup">
+    <label for="descrizione">Descrizione</label>
+    <textarea class="form-control" rows="4" [(ngModel)]="descrizione" name="descrizione" id="descrizione"></textarea>
+</div>
+<div class="form-goup">
+    <label for="stato">Stato</label>
+    <input type="text" class="form-control" [(ngModel)]="stato" id="stato">
+</div>
+
+<button class="btr btn-primary mt-2" (click)="salva()">salva</button>
