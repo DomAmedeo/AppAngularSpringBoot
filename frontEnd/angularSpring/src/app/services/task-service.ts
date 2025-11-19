@@ -64,4 +64,22 @@ export class TaskService {
     return false;  
   }
   
+  
+  async ModificaService(task: Task): Promise<boolean> {
+    try{
+      const varcodice = task.id;
+      const response = (await fetch("http://localhost:8080/api/task/" + task.id, {
+        method: 'PUT',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(task)
+      })).json();
+      return true;
+    }catch(error){
+      console.log("ERRORE" + error)
+    }
+    return false;
+  }
+  
 }

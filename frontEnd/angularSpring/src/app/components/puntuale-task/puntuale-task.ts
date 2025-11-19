@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TaskService } from '../../services/task-service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Task } from '../../models/task';
 
 @Component({
@@ -18,7 +18,7 @@ export class PuntualeTask {
 
 
   
-  constructor(private service: TaskService, private rottAttiva: ActivatedRoute){}
+  constructor(private service: TaskService, private rottAttiva: ActivatedRoute, private router: Router){}
 
   ngOnInit(){
     this.rottAttiva.params.subscribe(async (risultato)=>{
@@ -33,6 +33,11 @@ export class PuntualeTask {
         }
       }
     });
-
   }
+
+  Modifica(varCodice : Number | undefined) : void{
+      if(varCodice)
+        this.router.navigateByUrl("/task/modifica/"+ varCodice)
+  }
+
 }

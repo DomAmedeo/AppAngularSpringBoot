@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +21,8 @@ import spring.angular.primaprova.models.Task;
 public class TaskController {
     @Autowired
     private TaskRepository repo;
+
+
 
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping()
@@ -46,5 +49,26 @@ public class TaskController {
         return "Task eliminato";
     }
   
+    //FUNZIONA MA MODIFICA L' OGGETTO VECCHIO E CREA UN NUOVO OGGETTO COMTEMPORANEAMENTE
+    // @PutMapping("{varId}")
+    // public Task aggiornaTask(@RequestBody Task t,@PathVariable Integer varId){
+    //     singoloTask(varId).setDesc(t.getDesc());
+    //     singoloTask(varId).setTito(t.getTito());
+    //     singoloTask(varId).setStat(t.getStat());
+    //     repo.save(t);
+    //     return t;
+    // }
+    
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PutMapping("{varID}")
+    public Task aggiornareTask(@RequestBody Task t , @PathVariable Integer varID){
+        Task taskdaAggiornare = repo.findById(varID).orElse(null);
+        taskdaAggiornare.setTito(t.getTito());
+        taskdaAggiornare.setDesc(t.getDesc());
+        taskdaAggiornare.setStat(t.getStat());
+        repo.save(taskdaAggiornare);
+        return taskdaAggiornare;
+
+    }
 
 }

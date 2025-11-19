@@ -2,6 +2,7 @@ import { Routes } from '@angular/router';
 import { VisualizzaTasks } from './components/visualizza-tasks/visualizza-tasks';
 import { PuntualeTask } from './components/puntuale-task/puntuale-task';
 import { InserisciTask } from './components/inserisci-task/inserisci-task';
+import { ModificaTask } from './components/modifica-task/modifica-task';
 
 export const routes: Routes = [
     {
@@ -20,5 +21,9 @@ export const routes: Routes = [
     {
         path:'task/inserisci',
         component: InserisciTask,
+    },
+    {
+        path:'task/modifica/:codice',
+        component: ModificaTask,
     }
 ];
