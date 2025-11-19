@@ -42,11 +42,19 @@ public class TaskController {
         return repo.save(t);
     }
 
+    // aggiustiamo la delete utitlizzando un find by id
+    // @CrossOrigin(origins = "http://localhost:4200")
+    // @DeleteMapping("/{varId}")
+    // public String eliminaTask(@PathVariable Integer varId){
+    //     repo.deleteById(varId);
+    //     return "Task eliminato";
+    // }
+
+    //ora la delete è void quindi non ritorna nulla
     @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping("/{varId}")
-    public String eliminaTask(@PathVariable Integer varId){
+    public void eliminaTask(@PathVariable Integer varId){
         repo.deleteById(varId);
-        return "Task eliminato";
     }
   
     //FUNZIONA MA MODIFICA L' OGGETTO VECCHIO E CREA UN NUOVO OGGETTO COMTEMPORANEAMENTE
